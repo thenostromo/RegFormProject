@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./assets/js/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -97,15 +97,37 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./asse
 
 /***/ }),
 
-/***/ "./assets/js/index.js":
-/*!****************************!*\
-  !*** ./assets/js/index.js ***!
-  \****************************/
+/***/ "./assets/js/base.js":
+/*!***************************!*\
+  !*** ./assets/js/base.js ***!
+  \***************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/styles.css */ \"./assets/css/styles.css\");\n/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_styles_css__WEBPACK_IMPORTED_MODULE_0__);\n\nconsole.log(123);\n\n//# sourceURL=webpack:///./assets/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/styles.css */ \"./assets/css/styles.css\");\n/* harmony import */ var _css_styles_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_styles_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bulma/css/bulma.css */ \"./node_modules/bulma/css/bulma.css\");\n/* harmony import */ var bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(bulma_css_bulma_css__WEBPACK_IMPORTED_MODULE_1__);\n\n // The following code is based off a toggle menu by @Bradcomp\n// source: https://gist.github.com/Bradcomp/a9ef2ef322a8e8017443b626208999c1\n\n(function () {\n  var burger = document.querySelector('.burger');\n  var menu = document.querySelector('#' + burger.dataset.target);\n  burger.addEventListener('click', function () {\n    burger.classList.toggle('is-active');\n    menu.classList.toggle('is-active');\n  });\n})();\n\n//# sourceURL=webpack:///./assets/js/base.js?");
+
+/***/ }),
+
+/***/ "./node_modules/bulma/css/bulma.css":
+/*!******************************************!*\
+  !*** ./node_modules/bulma/css/bulma.css ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./node_modules/bulma/css/bulma.css?");
+
+/***/ }),
+
+/***/ 0:
+/*!*********************************!*\
+  !*** multi ./assets/js/base.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__(/*! ./assets/js/base.js */\"./assets/js/base.js\");\n\n\n//# sourceURL=webpack:///multi_./assets/js/base.js?");
 
 /***/ })
 

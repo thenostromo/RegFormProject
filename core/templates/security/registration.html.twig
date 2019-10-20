@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block styles %}{% endblock %}
+
+{% block content %}
+    <section class="hero is-info is-fullheight">
+        {% include 'embed/header.html.twig' %}
+
+        <div class="hero-body">
+            <div class="container">
+                <div class="column is-6 is-offset-3">
+                    <h1 class="title">
+                        Registration form
+                    </h1>
+                    <div class="box" id="app"></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        var userModel = JSON.parse('{{ userModel|raw }}');
+    </script>
+    <script src="dist/regFormApp.js"></script>
+{% endblock %}
