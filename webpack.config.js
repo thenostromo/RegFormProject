@@ -8,7 +8,7 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'public/build')
     },
     mode: 'development',
     module: {
@@ -65,7 +65,7 @@ module.exports = {
          * without pre-compiling them
          */
         alias: {
-            'vue$': 'vue/dist/vue.esm.js',
+            'vue$': 'vue/public/vue.esm.js',
         },
         extensions: ['*', '.vue', '.js', '.json'],
     },
@@ -73,6 +73,6 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: "styles.css"
         }),
-        
+
     ]
 };

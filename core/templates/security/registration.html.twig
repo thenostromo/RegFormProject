@@ -12,19 +12,35 @@
             <div class="container">
                 <div class="column is-6 is-offset-3">
                     <h1 class="title">
-                        Registration form
+                        {{ interface["registration_page.form_header"] }}
                     </h1>
-                    <div class="box" id="app"></div>
+                    <div id="app"></div>
                 </div>
             </div>
         </div>
 
+        {% include 'embed/footer.html.twig' %}
     </section>
 {% endblock %}
 
 {% block javascript %}
     <script>
         var userModel = JSON.parse('{{ userModel|raw }}');
+        var interfaceMessages = {
+            'registration_page.form_username_label'       : '{{ interface["registration_page.form_username_label"] }}',
+            'registration_page.form_username_placeholder' : '{{ interface["registration_page.form_username_placeholder"] }}',
+            'registration_page.form_password_label'       : '{{ interface["registration_page.form_password_label"] }}',
+            'registration_page.form_password_placeholder' : '{{ interface["registration_page.form_password_placeholder"] }}',
+            'registration_page.form_email_label'          : '{{ interface["registration_page.form_email_label"] }}',
+            'registration_page.form_email_placeholder'    : '{{ interface["registration_page.form_email_placeholder"] }}',
+            'registration_page.form_full_name_label'      : '{{ interface["registration_page.form_full_name_label"] }}',
+            'registration_page.form_full_name_placeholder': '{{ interface["registration_page.form_full_name_placeholder"] }}',
+            'form_error.required_field': '{{ interface["registration_page.form_full_name_placeholder"] }}',
+            'form_error.no_cyrillic_letters': '{{ interface["registration_page.form_full_name_placeholder"] }}',
+            'form_error.only_cyrillic_dash_space': '{{ interface["registration_page.form_full_name_placeholder"] }}',
+            'form_error.min_length': '{{ interface["registration_page.form_full_name_placeholder"] }}',
+            'form_error.max_length': '{{ interface["registration_page.form_full_name_placeholder"] }}',
+        }
     </script>
-    <script src="dist/regFormApp.js"></script>
+    <script src="public/build/regFormApp.js"></script>
 {% endblock %}
