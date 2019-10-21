@@ -1,0 +1,18 @@
+<footer class="footer" style="background-color: transparent;">
+    <div class="container">
+        <div class="content has-text-centered">
+            <div class="columns is-mobile is-centered has-text-grey-light">
+                {{ interface["footer.choose_language"] }}:&nbsp;
+                <img src="public/images/uk.png" style="width: 25px; cursor: pointer;" onclick="setDefaultLanguage('en')"> &nbsp;/&nbsp;
+                <img src="public/images/russia.png" style="width: 25px; cursor: pointer;" onclick="setDefaultLanguage('ru')">
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function setDefaultLanguage(value) {
+        document.cookie = "defaultLanguage=" + value;
+        document.location.reload();
+    }
+</script>

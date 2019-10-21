@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block styles %}{% endblock %}
+
+{% block content %}
+    <section class="hero is-info is-fullheight">
+        {% include 'embed/header.html.twig' %}
+
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-6 is-offset-3">
+                    <h1 class="title">
+                        {{ interface["homepage_page.form_header"] }}
+                    </h1>
+                    <h2 class="subtitle">
+                        {{ interface["homepage_page.intro_text"] }}
+                    </h2>
+                    <div class="buttons is-centered">
+                        <a href="login">
+                            <button class="button is-success">
+                                <i class="fa fa-lock"></i>&nbsp;{{ interface["homepage_page.sign_in_button"] }}
+                            </button>
+                        </a>
+                        <a href="registration">
+                            <button class="button is-danger">
+                                <i class="fa fa-users"></i>&nbsp;{{ interface["homepage_page.sign_up_button"] }}
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include 'embed/footer.html.twig' %}
+    </section>
+{% endblock %}
+
+{% block javascript %}{% endblock %}

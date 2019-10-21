@@ -1,26 +1,32 @@
 <?php
 namespace Core\Controller;
 
-use Twig\Environment;
-use Twig\Loader\FilesystemLoader;
-
-class DefaultController
+class DefaultController extends AbstractController
 {
-    private $loader;
-
-    private $twig;
-
-    public function __construct()
+    /**
+     * @param array $request
+     * @return string
+     */
+    public function homepage(array $request)
     {
-        $this->loader = new FilesystemLoader(__DIR__ . '/../templates');
-        $this->twig = new Environment($this->loader);
+        return $this->renderTemplate('default/homepage.html.twig');
     }
 
-    public function homepage($request)
+    /**
+     * @param array $request
+     * @return string|\Twig\Environment
+     */
+    public function about(array $request)
     {
+        return $this->renderTemplate('default/about.html.twig');
+    }
 
-        echo $this->twig->render('homepage.html.twig', ['name' => 'John Doe',
-            'occupation' => 'gardener']);
-
+    /**
+     * @param array $request
+     * @return string
+     */
+    public function error404(array $request)
+    {
+        return $this->renderTemplate('error/404.html.twig');
     }
 }
