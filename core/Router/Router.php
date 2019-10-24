@@ -1,6 +1,7 @@
 <?php
 namespace Core\Router;
 
+use Core\Controller\Api\SecurityApiController;
 use Core\Controller\DefaultController;
 use Core\Controller\SecurityController;
 
@@ -15,7 +16,8 @@ class Router
     {
         $this->controllers = [
             'default' => new DefaultController(),
-            'security' => new SecurityController()
+            'security' => new SecurityController(),
+            'securityApi' => new SecurityApiController()
         ];
     }
 
@@ -23,23 +25,49 @@ class Router
      * @param array $request
      * @return string
      */
-    public function handleRequest(array $request)
+    public function handleRequest()
     {
-        if (!array_key_exists("path", $request)) {
-            return $this->controllers['default']->homepage($request);
-        }
+        $url = $_SERVER['REQUEST_URI'];
 
-        switch($request["path"]) {
-            case("about"):
+        $response = null;
+        $response = $this->handleApiRequests($url, $_POST);
+        if (!$response) {
+            $response = $this->handleMainPages($url, $_POST);
+        }
+        return (!$response)
+            ? $this->controllers['default']->error404()
+            : $response;
+    }
+
+    /**
+     * @param string $url
+     * @param array $request
+     * @return mixed
+     */
+    private function handleApiRequests(string $url, array $request = [])
+    {
+        switch($url) {
+            case("/api/createUser"):
+                return $this->controllers['securityApi']->createUser($request);
+        }
+    }
+
+    /**
+     * @param string $url
+     * @param array $request
+     * @return string
+     */
+    private function handleMainPages(string $url, array $request = [])
+    {
+        switch($url) {
+            case("/"):
+                return $this->controllers['default']->homepage($request);
+            case("/about"):
                 return $this->controllers['default']->about($request);
-            case("login"):
+            case("/login"):
                 return $this->controllers['security']->login($request);
-            case("registration"):
+            case("/registration"):
                 return $this->controllers['security']->registration($request);
-            default:
-                return $this->controllers['default']->error404($request);
         }
-
-        var_dump($request); exit();
     }
 }
