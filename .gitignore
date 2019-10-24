@@ -2,7 +2,3 @@ node_modules
 old
 vendor
 /.idea
-!/public/avatar/.gitignore
-public/avatar
-!/public/tmp/.gitignore
-public/tmp
