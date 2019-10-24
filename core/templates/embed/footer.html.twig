@@ -12,9 +12,14 @@
 
 <script>
     function setDefaultLanguage(value) {
-        var myDate = new Date();
-        myDate.setMonth(myDate.getMonth() + 1);
-        document.cookie = "defaultLanguage=" + value + ";domain=." + window.location.hostname + ";path=/;expires=" + myDate;
+        // FOR PRODUCTION DOMAIN
+        //var myDate = new Date();
+        //myDate.setMonth(myDate.getMonth() + 1);
+        //document.cookie = "defaultLanguage=" + value + ";domain=." + window.location.hostname + ";path=/;expires=" + myDate;
+        //document.cookie = "defaultLanguage=" + value + ";domain=." + window.location.hostname + ";path=/;expires=" + myDate;
+
+        // FOR LOCAL DOMAIN (FOR INSTANCE '*.develop')
+        document.cookie = "defaultLanguage=" + value;
         document.location.reload();
     }
 </script>
