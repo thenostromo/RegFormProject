@@ -12,7 +12,9 @@
 
 <script>
     function setDefaultLanguage(value) {
-        document.cookie = "defaultLanguage=" + value;
+        var myDate = new Date();
+        myDate.setMonth(myDate.getMonth() + 1);
+        document.cookie = "defaultLanguage=" + value + ";domain=." + window.location.hostname + ";path=/;expires=" + myDate;
         document.location.reload();
     }
 </script>
