@@ -45,7 +45,7 @@
                                     {{ interface["profile_page.avatar_label"] }}
                                 </td>
                                 <td>
-                                    {% if user.getAvatar() %}
+                                    {% if user.getAvatar() and user.getAvatar() != "null" %}
                                         <img src="{{ hostWithScheme }}/public/avatar/{{ user.getAvatar() }}" style="width: 200px;">
                                     {% endif %}
                                 </td>
