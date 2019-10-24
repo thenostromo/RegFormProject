@@ -12,7 +12,7 @@ class DatabaseManager
     {
         $dsn = "mysql:host=localhost;dbname=reg_form_project";
         $user = "root";
-        $passwd = "root123";
+        $passwd = "root";
         $options = array(
             \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
         );
