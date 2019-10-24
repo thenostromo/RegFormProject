@@ -28,6 +28,11 @@ class User
      */
     private $email;
 
+    /**
+     * @var string
+     */
+    private $avatar;
+
     public function __construct()
     {
         $this->id = null;
@@ -111,5 +116,49 @@ class User
     public function getFullname()
     {
         return $this->fullname;
+    }
+
+    /**
+     * @param string $avatar
+     * @return $this
+     */
+    public function setAvatar(string $avatar)
+    {
+        $this->avatar = $avatar;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param array $userArray
+     */
+    public function makeFromArray(array $userArray)
+    {
+        $this->id = $userArray["id"];
+
+        $this->setUsername($userArray["username"]);
+        $this->setEmail($userArray["email"]);
+        $this->setFullname($userArray["fullname"]);
+        $this->setAvatar($userArray["avatar"]);
+    }
+
+    /**
+     * @param array $sessionInfo
+     */
+    public function loadFromSession($sessionInfo)
+    {
+        $this->id = $sessionInfo["id"];
+
+        $this->setUsername($sessionInfo["username"]);
+        $this->setEmail($sessionInfo["email"]);
+        $this->setFullname($sessionInfo["fullname"]);
+        $this->setAvatar($sessionInfo["avatar"]);
     }
 }

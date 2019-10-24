@@ -9,52 +9,39 @@
         {% include 'embed/header.html.twig' %}
 
         <div class="hero-body">
-            <div class="container has-text-centered">
+            <div class="container">
                 <div class="column is-6 is-offset-3">
                     <h1 class="title">
-                        Registration form
+                        {{ interface["login_page.form_header"] }}
                     </h1>
-                    <div class="box">
-                        <div class="field">
-                            <label class="label">Name</label>
-                            <div class="control">
-                                <input class="input" type="text" placeholder="Text input">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Username</label>
-                            <div class="control has-icons-left has-icons-right">
-                                <input class="input is-success" type="text" placeholder="Text input" value="bulma">
-                                <span class="icon is-small is-left">
-                                  <i class="fas fa-user"></i>
-                                </span>
-                                <span class="icon is-small is-right">
-                                  <i class="fas fa-check"></i>
-                                </span>
-                            </div>
-                            <p class="help is-success">This username is available</p>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Email</label>
-                            <div class="control has-icons-left has-icons-right">
-                                <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
-                                <span class="icon is-small is-left">
-                                  <i class="fas fa-envelope"></i>
-                                </span>
-                                <span class="icon is-small is-right">
-                                  <i class="fas fa-exclamation-triangle"></i>
-                                </span>
-                            </div>
-                            <p class="help is-danger">This email is invalid</p>
-                        </div>
-                    </div>
+                    <div id="app"></div>
                 </div>
             </div>
         </div>
 
+        {% include 'embed/footer.html.twig' %}
     </section>
 {% endblock %}
 
-{% block javascript %}{% endblock %}
+{% block javascript %}
+    <script>
+        var userModel = JSON.parse('{{ userModel|raw }}');
+        var urlAuthUser = '{{ urlAuthUser }}';
+        var urlProfileUser = '{{ urlProfileUser }}';
+        var interfaceMessages = {
+            'login_page.form_username_label'       : '{{ interface["login_page.form_username_label"] }}',
+            'login_page.form_username_placeholder' : '{{ interface["login_page.form_username_placeholder"] }}',
+            'login_page.form_password_label'       : '{{ interface["login_page.form_password_label"] }}',
+            'login_page.form_password_placeholder' : '{{ interface["login_page.form_password_placeholder"] }}',
+            'form_error.required_field': '{{ interface["form_error.required_field"] }}',
+            'form_error.eng_chars_number_and_punct': '{{ interface["form_error.eng_chars_number_and_punct"] }}',
+            'form_error.only_cyrillic_dash_space': '{{ interface["form_error.only_cyrillic_dash_space"] }}',
+            'form_error.min_length': '{{ interface["form_error.min_length"] }}',
+            'form_error.max_length': '{{ interface["form_error.max_length"] }}',
+            'form_error.incorrect_email': '{{ interface["form_error.incorrect_email"] }}',
+            'form_button.submit': '{{ interface["form_button.submit"] }}',
+            'form_button.cancel': '{{ interface["form_button.cancel"] }}',
+        }
+    </script>
+    <script src="public/build/authFormApp.js"></script>
+{% endblock %}

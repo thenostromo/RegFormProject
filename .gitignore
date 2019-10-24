@@ -1,4 +1,8 @@
 node_modules
 old
 vendor
-composer.json
+/.idea
+!/public/avatar/.gitignore
+public/avatar
+!/public/tmp/.gitignore
+public/tmp

@@ -4,7 +4,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     entry: {
         base: ['./assets/js/base.js'],
-        regFormApp: ['./assets/js/reg_form/app.js']
+        regFormApp: ['./assets/js/reg_form/app.js'],
+        authFormApp: ['./assets/js/auth_form/app.js']
     },
     output: {
         filename: '[name].js',

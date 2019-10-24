@@ -4,28 +4,25 @@ namespace Core\Controller;
 class DefaultController extends AbstractController
 {
     /**
-     * @param array $request
      * @return string
      */
-    public function homepage(array $request)
+    public function homepage()
     {
         return $this->renderTemplate('default/homepage.html.twig');
     }
 
     /**
-     * @param array $request
-     * @return string|\Twig\Environment
+     * @return string
      */
-    public function about(array $request)
+    public function about()
     {
         return $this->renderTemplate('default/about.html.twig');
     }
 
     /**
-     * @param array $request
      * @return string
      */
-    public function error404(array $request)
+    public function error404()
     {
         return $this->renderTemplate('error/404.html.twig');
     }

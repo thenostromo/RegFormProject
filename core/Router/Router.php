@@ -3,6 +3,7 @@ namespace Core\Router;
 
 use Core\Controller\Api\SecurityApiController;
 use Core\Controller\DefaultController;
+use Core\Controller\ProfileController;
 use Core\Controller\SecurityController;
 
 class Router
@@ -17,6 +18,7 @@ class Router
         $this->controllers = [
             'default' => new DefaultController(),
             'security' => new SecurityController(),
+            'profile' => new ProfileController(),
             'securityApi' => new SecurityApiController()
         ];
     }
@@ -49,6 +51,13 @@ class Router
         switch($url) {
             case("/api/createUser"):
                 return $this->controllers['securityApi']->createUser($request);
+                break;
+            case("/api/authUser"):
+                return $this->controllers['securityApi']->authUser($request);
+                break;
+            case("/api/saveFile"):
+                return $this->controllers['securityApi']->saveFile($_FILES);
+                break;
         }
     }
 
@@ -61,13 +70,23 @@ class Router
     {
         switch($url) {
             case("/"):
-                return $this->controllers['default']->homepage($request);
+                return $this->controllers['default']->homepage();
+                break;
             case("/about"):
-                return $this->controllers['default']->about($request);
+                return $this->controllers['default']->about();
+                break;
             case("/login"):
-                return $this->controllers['security']->login($request);
+                return $this->controllers['security']->login();
+                break;
+            case("/logout"):
+                return $this->controllers['security']->logout();
+                break;
             case("/registration"):
-                return $this->controllers['security']->registration($request);
+                return $this->controllers['security']->registration();
+                break;
+            case("/profile/view"):
+                return $this->controllers['profile']->view();
+                break;
         }
     }
 }

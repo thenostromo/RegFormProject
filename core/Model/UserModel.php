@@ -13,6 +13,8 @@ class UserModel
 
     public $email;
 
+    public $avatar;
+
     public function __construct()
     {
         $this->id = null;
@@ -20,5 +22,6 @@ class UserModel
         $this->password = null;
         $this->fullname = null;
         $this->email = null;
+        $this->avatar = null;
     }
 }
