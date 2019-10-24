@@ -2,6 +2,7 @@
 namespace Core\Controller;
 
 use Core\Model\UserModel;
+use Core\Provider\RouteProvider;
 
 class SecurityController extends AbstractController
 {
@@ -28,7 +29,8 @@ class SecurityController extends AbstractController
     {
         $userModel = new UserModel();
         return $this->renderTemplate('security/registration.html.twig', [
-            'userModel' => json_encode($userModel)
+            'userModel' => json_encode($userModel),
+            'urlCreateUser' => RouteProvider::getApiRoute(RouteProvider::API_SECURITY_CONTROLLER_CREATE_USER)
         ]);
     }
 }

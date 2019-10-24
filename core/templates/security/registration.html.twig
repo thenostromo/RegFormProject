@@ -26,6 +26,7 @@
 {% block javascript %}
     <script>
         var userModel = JSON.parse('{{ userModel|raw }}');
+        var urlCreateUser = '{{ urlCreateUser }}';
         var interfaceMessages = {
             'registration_page.form_username_label'       : '{{ interface["registration_page.form_username_label"] }}',
             'registration_page.form_username_placeholder' : '{{ interface["registration_page.form_username_placeholder"] }}',
@@ -35,6 +36,7 @@
             'registration_page.form_email_placeholder'    : '{{ interface["registration_page.form_email_placeholder"] }}',
             'registration_page.form_full_name_label'      : '{{ interface["registration_page.form_full_name_label"] }}',
             'registration_page.form_full_name_placeholder': '{{ interface["registration_page.form_full_name_placeholder"] }}',
+            'registration_page.form_agree_with_terms'     : '{{ interface["registration_page.form_agree_with_terms"] }}',
             'form_error.required_field': '{{ interface["registration_page.form_full_name_placeholder"] }}',
             'form_error.no_cyrillic_letters': '{{ interface["registration_page.form_full_name_placeholder"] }}',
             'form_error.only_cyrillic_dash_space': '{{ interface["registration_page.form_full_name_placeholder"] }}',

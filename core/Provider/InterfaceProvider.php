@@ -66,6 +66,7 @@ class InterfaceProvider
                 'registration_page.form_email_placeholder' => 'Enter your email ...',
                 'registration_page.form_full_name_label' => 'Full name',
                 'registration_page.form_full_name_placeholder' => 'Enter your full name ...',
+                'registration_page.form_agree_with_terms' => 'I agree to the terms and conditions',
 
                 'form_error.required_field' => 'The field must be filled',
                 'form_error.no_cyrillic_letters' => 'Only Latin characters, numbers, and punctuation are allowed',
@@ -96,6 +97,7 @@ class InterfaceProvider
                 'registration_page.form_email_placeholder' => 'Введите вашу электронную почту ...',
                 'registration_page.form_full_name_label' => 'ФИО',
                 'registration_page.form_full_name_placeholder' => 'Введите ваше полное имя ...',
+                'registration_page.form_agree_with_terms' => 'Я согласен с пользовательским соглашением',
 
                 'form_error.required_field' => 'Поле должно быть заполнено',
                 'form_error.no_cyrillic_letters' => 'Допускаются только латиница, цифры и знаки препинания',
