@@ -69,7 +69,7 @@ class UserManager
             throw new UserAlreadyExistException();
         }
 
-        if ($avatar) {
+        if ($avatar && $avatar !== "null") {
             $newPath = $this->fileManager->moveToAvatarStorage($userModel->avatar);
             $userModel->avatar = $newPath;
         }
