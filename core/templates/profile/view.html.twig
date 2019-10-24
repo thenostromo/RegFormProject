@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block styles %}{% endblock %}
+
+{% block content %}
+    <section class="hero is-info is-fullheight">
+        {% include 'embed/header.html.twig' %}
+
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-6 is-offset-3">
+                    <h1 class="title">
+                        {{ interface["profile_page.form_header"] }}
+                    </h1>
+                    <div class="box">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    {{ interface["profile_page.username_label"] }}
+                                </td>
+                                <td>
+                                    {{ user.getUsername() }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ interface["profile_page.email_label"] }}
+                                </td>
+                                <td>
+                                    {{ user.getEmail() }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ interface["profile_page.fullname_label"] }}
+                                </td>
+                                <td>
+                                    {{ user.getFullname() }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{ interface["profile_page.avatar_label"] }}
+                                </td>
+                                <td>
+                                    {% if user.getAvatar() %}
+                                        <img src="{{ hostWithScheme }}/public/avatar/{{ user.getAvatar() }}" style="width: 200px;">
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <a href="{{ urlLogout }}">
+                                    <button class="button is-link">
+                                        {{ interface['form_button.logout'] }}
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include 'embed/footer.html.twig' %}
+    </section>
+{% endblock %}
+
+{% block javascript %}{% endblock %}

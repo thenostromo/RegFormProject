@@ -27,6 +27,8 @@
     <script>
         var userModel = JSON.parse('{{ userModel|raw }}');
         var urlCreateUser = '{{ urlCreateUser }}';
+        var urlLoginPage = '{{ urlLoginPage }}';
+        var urlSaveFile = '{{ urlSaveFile }}';
         var interfaceMessages = {
             'registration_page.form_username_label'       : '{{ interface["registration_page.form_username_label"] }}',
             'registration_page.form_username_placeholder' : '{{ interface["registration_page.form_username_placeholder"] }}',
@@ -37,11 +39,15 @@
             'registration_page.form_full_name_label'      : '{{ interface["registration_page.form_full_name_label"] }}',
             'registration_page.form_full_name_placeholder': '{{ interface["registration_page.form_full_name_placeholder"] }}',
             'registration_page.form_agree_with_terms'     : '{{ interface["registration_page.form_agree_with_terms"] }}',
-            'form_error.required_field': '{{ interface["registration_page.form_full_name_placeholder"] }}',
-            'form_error.no_cyrillic_letters': '{{ interface["registration_page.form_full_name_placeholder"] }}',
-            'form_error.only_cyrillic_dash_space': '{{ interface["registration_page.form_full_name_placeholder"] }}',
-            'form_error.min_length': '{{ interface["registration_page.form_full_name_placeholder"] }}',
-            'form_error.max_length': '{{ interface["registration_page.form_full_name_placeholder"] }}',
+            'registration_page.form_image_plugin_placeholder' : '{{ interface["registration_page.form_image_plugin_placeholder"] }}',
+            'form_error.required_field': '{{ interface["form_error.required_field"] }}',
+            'form_error.eng_chars_number_and_punct': '{{ interface["form_error.eng_chars_number_and_punct"] }}',
+            'form_error.only_cyrillic_dash_space': '{{ interface["form_error.only_cyrillic_dash_space"] }}',
+            'form_error.min_length': '{{ interface["form_error.min_length"] }}',
+            'form_error.max_length': '{{ interface["form_error.max_length"] }}',
+            'form_error.incorrect_email': '{{ interface["form_error.incorrect_email"] }}',
+            'form_button.submit': '{{ interface["form_button.submit"] }}',
+            'form_button.cancel': '{{ interface["form_button.cancel"] }}',
         }
     </script>
     <script src="public/build/regFormApp.js"></script>

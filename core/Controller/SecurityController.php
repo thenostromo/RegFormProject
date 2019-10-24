@@ -7,30 +7,44 @@ use Core\Provider\RouteProvider;
 class SecurityController extends AbstractController
 {
     /**
-     * @param array $request
      * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
      */
-    public function login(array $request)
+    public function login()
     {
-        return $this->renderTemplate('security/login.html.twig');
+        $userModel = new UserModel();
+        if ($this->sessionManager->isAuthUser()) {
+            $this->redirect(RouteProvider::getRoute(RouteProvider::PROFILE_CONTROLLER_VIEW));
+        }
+        return $this->renderTemplate('security/login.html.twig', [
+            'userModel' => json_encode($userModel),
+            'urlAuthUser' => RouteProvider::getRoute(RouteProvider::API_SECURITY_CONTROLLER_AUTH_USER),
+            'urlProfileUser' => RouteProvider::getRoute(RouteProvider::PROFILE_CONTROLLER_VIEW),
+        ]);
     }
 
     /**
-     * @param array $request
      * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
      */
-    public function registration(array $request)
+    public function logout()
+    {
+        $this->sessionManager->sessionStop();
+        $this->redirect(RouteProvider::getRoute(RouteProvider::DEFAULT_CONTROLLER_HOMEPAGE));
+    }
+
+    /**
+     * @return string
+     */
+    public function registration()
     {
         $userModel = new UserModel();
+        if ($this->sessionManager->isAuthUser()) {
+            $this->redirect(RouteProvider::getRoute(RouteProvider::PROFILE_CONTROLLER_VIEW));
+        }
         return $this->renderTemplate('security/registration.html.twig', [
             'userModel' => json_encode($userModel),
-            'urlCreateUser' => RouteProvider::getApiRoute(RouteProvider::API_SECURITY_CONTROLLER_CREATE_USER)
+            'urlSaveFile' => RouteProvider::getRoute(RouteProvider::API_SECURITY_CONTROLLER_SAVE_FILE),
+            'urlCreateUser' => RouteProvider::getRoute(RouteProvider::API_SECURITY_CONTROLLER_CREATE_USER),
+            'urlLoginPage' => RouteProvider::getRoute(RouteProvider::SECURITY_CONTROLLER_LOGIN),
         ]);
     }
 }

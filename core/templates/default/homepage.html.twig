@@ -18,12 +18,12 @@
                         {{ interface["homepage_page.intro_text"] }}
                     </h2>
                     <div class="buttons is-centered">
-                        <a href="login">
+                        <a href="{{ hostWithScheme }}/login">
                             <button class="button is-success">
                                 <i class="fa fa-lock"></i>&nbsp;{{ interface["homepage_page.sign_in_button"] }}
                             </button>
                         </a>
-                        <a href="registration">
+                        <a href="{{ hostWithScheme }}/registration">
                             <button class="button is-danger">
                                 <i class="fa fa-users"></i>&nbsp;{{ interface["homepage_page.sign_up_button"] }}
                             </button>

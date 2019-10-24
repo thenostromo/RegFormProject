@@ -2,6 +2,7 @@
 namespace Core\Manager;
 
 use Core\Entity\User;
+use Core\Model\UserModel;
 
 class DatabaseManager
 {
@@ -9,19 +10,9 @@ class DatabaseManager
 
     public function __construct()
     {
-        $host = "localhost";
-        $database = "reg_form_project";
-        $user = "root";
-        $password = "root123";
-
-        /*$this->connection = \mysqli_connect($host, $user, $password, $database);
-        if ($this->connection->connect_errno) {
-            echo "Failed to connect to MySQL: (" . $this->connection->connect_errno . ") " . $this->connection->connect_error;
-        }
-        $this->connection->set_charset("utf8");*/
         $dsn = "mysql:host=localhost;dbname=reg_form_project";
         $user = "root";
-        $passwd = "root123";
+        $passwd = "root";
         $options = array(
             \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
         );
@@ -30,27 +21,47 @@ class DatabaseManager
     }
 
     /**
-     * Добавление дисциплины
-     *
-     * @param User $user
+     * @param UserModel $userModel
      * @return boolean
      */
-    public function addUser(User $user)
+    public function createUser(UserModel $userModel)
     {
-        $stm = $this->connection->prepare("INSERT INTO user (username, password, email, fullname) VALUES (:username, :password, :email, :fullname)");
-        $stm->bindValue(":username", $user->getUsername());
-        $stm->bindValue(":password", $user->getFullname());
-        $stm->bindValue(":email", $user->getEmail());
-        $stm->bindValue(":fullname", $user->getFullname());
+        $stm = $this->connection->prepare("INSERT INTO user (username, password, email, fullname, avatar) VALUES (:username, :password, :email, :fullname, :avatar)");
+        $stm->bindValue(":username", $userModel->username);
+        $stm->bindValue(":password", $userModel->password);
+        $stm->bindValue(":email", $userModel->email);
+        $stm->bindValue(":fullname", $userModel->fullname);
+        $stm->bindValue(":avatar", $userModel->avatar);
         $stm->execute();
+
+        return $stm->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function getUserControlInfo($login)
+    /**
+     * @param UserModel $userModel
+     * @return boolean
+     */
+    public function isUserExist($userModel)
     {
-        $stm = $pdo->prepare("SELECT * FROM countries WHERE id = ?");
-        $stm->bindValue(1, $id);
+        $stm = $this->connection->prepare("SELECT * FROM user WHERE username = :username OR email = :email");
+        $stm->bindValue(":username", $userModel->username);
+        $stm->bindValue(":email", $userModel->email);
         $stm->execute();
 
-        $row = $stm->fetch(PDO::FETCH_ASSOC);
+        return $stm->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * @param UserModel $userModel
+     * @return boolean
+     */
+    public function getUserInfo($userModel)
+    {
+        $stm = $this->connection->prepare("SELECT * FROM user WHERE username = :username AND password = :password");
+        $stm->bindValue(":username", $userModel->username);
+        $stm->bindValue(":password", $userModel->password);
+        $stm->execute();
+
+        return $stm->fetch(\PDO::FETCH_ASSOC);
     }
 }
