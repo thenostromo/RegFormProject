@@ -69,11 +69,13 @@ class InterfaceProvider
 
                 'footer.choose_language' => 'Choose language',
 
+                'homepage_page.title' => 'Homepage',
                 'homepage_page.form_header' => 'Welcome!',
                 'homepage_page.intro_text' => 'Here you can try to create account and log in to the project. Upload your image, use validation and edit your profile. Enjoy!',
                 'homepage_page.sign_up_button' => 'Sign up',
                 'homepage_page.sign_in_button' => 'Sign in',
 
+                'registration_page.title' => 'Registration',
                 'registration_page.form_header' => 'Registration form',
                 'registration_page.form_username_label' => 'Username',
                 'registration_page.form_username_placeholder' => 'Enter your username ...',
@@ -86,20 +88,24 @@ class InterfaceProvider
                 'registration_page.form_agree_with_terms' => 'I agree to the terms and conditions',
                 'registration_page.form_image_plugin_placeholder' => 'Drag the image into this field or click here. Allowed file size up to 5 mb.',
 
+                'login_page.title' => 'Authorization',
                 'login_page.form_header' => 'Authorization form',
                 'login_page.form_username_label' => 'Username',
                 'login_page.form_username_placeholder' => 'Enter your username ...',
                 'login_page.form_password_label' => 'Password',
                 'login_page.form_password_placeholder' => 'Enter your password ...',
 
+                'profile_page.title' => 'Profile',
                 'profile_page.form_header' => 'Your profile!',
                 'profile_page.username_label' => 'Username',
                 'profile_page.email_label' => 'Email',
                 'profile_page.fullname_label' => 'Full name',
                 'profile_page.avatar_label' => 'Avatar',
 
+                'about_page.title' => 'About',
                 'about_page.form_header' => "About project",
 
+                'error_page.title' => 'Error',
                 'error_page.form_header_404' => 'Error 404. Page not found.',
 
                 'form_error.required_field' => 'The field must be filled',
@@ -126,11 +132,13 @@ class InterfaceProvider
 
                 'footer.choose_language' => 'Выберите язык',
 
+                'homepage_page.title' => 'Домашная страница',
                 'homepage_page.form_header' => 'Добро пожаловать!',
                 'homepage_page.intro_text' => 'Здесь вы можете попробовать создать учетную запись и войти в проект. Загрузите свое изображение, используйте проверку и отредактируйте свой профиль. Наслаждайтесь!',
                 'homepage_page.sign_up_button' => 'Регистрация',
                 'homepage_page.sign_in_button' => 'Авторизация',
 
+                'registration_page.title' => 'Регистрация',
                 'registration_page.form_header' => 'Форма регистрации',
                 'registration_page.form_username_label' => 'Логин',
                 'registration_page.form_username_placeholder' => 'Введите ваш логин ...',
@@ -143,20 +151,24 @@ class InterfaceProvider
                 'registration_page.form_agree_with_terms' => 'Я согласен с пользовательским соглашением',
                 'registration_page.form_image_plugin_placeholder' => 'Перетащите изображение в это поле или нажмите здесь. Допустимый размер файлов до 5 мб.',
 
+                'login_page.title' => 'Авторизация',
                 'login_page.form_header' => 'Форма авторизации',
                 'login_page.form_username_label' => 'Логин',
                 'login_page.form_username_placeholder' => 'Введите ваш логин ...',
                 'login_page.form_password_label' => 'Пароль',
                 'login_page.form_password_placeholder' => 'Введите ваш пароль ...',
 
+                'profile_page.title' => 'Профиль',
                 'profile_page.form_header' => 'Ваш профиль!',
                 'profile_page.username_label' => 'Логин',
                 'profile_page.email_label' => 'Электронная почта',
                 'profile_page.fullname_label' => 'ФИО',
                 'profile_page.avatar_label' => 'Аватар',
 
+                'about_page.title' => 'О проекте',
                 'about_page.form_header' => "О проекте",
 
+                'error_page.title' => 'Ошибка',
                 'error_page.form_header_404' => 'Ошибка 404. Страница не найдена.',
 
                 'form_error.required_field' => 'Поле должно быть заполнено',
