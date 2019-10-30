@@ -39,7 +39,7 @@ abstract class AbstractController
     protected function renderTemplate(string $template, array $params = [])
     {
         $params['interface'] = InterfaceProvider::getInterfaceMessages();
-        $params["hostWithScheme"] = RouteProvider::getRoute(RouteProvider::HOST_WITH_SCHEME);
+        $params["hostWithScheme"] = RouteProvider::getRoute(RouteProvider::HOST_WITH_SCHEME, RouteProvider::IS_FULL_URL);
         try {
             return $this->twig->render($template, $params);
         } catch (\Twig\Error\Error $ex) {
