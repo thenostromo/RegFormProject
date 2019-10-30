@@ -5,6 +5,7 @@ use Core\Controller\Api\SecurityApiController;
 use Core\Controller\DefaultController;
 use Core\Controller\ProfileController;
 use Core\Controller\SecurityController;
+use Core\Provider\RouteProvider;
 
 class Router
 {
@@ -49,13 +50,13 @@ class Router
     private function handleApiRequests(string $url, array $request = [])
     {
         switch($url) {
-            case("/api/createUser"):
+            case(RouteProvider::getRoute(RouteProvider::API_SECURITY_CONTROLLER_CREATE_USER)):
                 return $this->controllers['securityApi']->createUser($request);
                 break;
-            case("/api/authUser"):
+            case(RouteProvider::getRoute(RouteProvider::API_SECURITY_CONTROLLER_AUTH_USER)):
                 return $this->controllers['securityApi']->authUser($request);
                 break;
-            case("/api/saveFile"):
+            case(RouteProvider::getRoute(RouteProvider::API_SECURITY_CONTROLLER_SAVE_FILE)):
                 return $this->controllers['securityApi']->saveFile($_FILES);
                 break;
         }
@@ -69,22 +70,22 @@ class Router
     private function handleMainPages(string $url, array $request = [])
     {
         switch($url) {
-            case("/"):
+            case(RouteProvider::getRoute(RouteProvider::DEFAULT_CONTROLLER_HOMEPAGE)):
                 return $this->controllers['default']->homepage();
                 break;
-            case("/about"):
+            case(RouteProvider::getRoute(RouteProvider::DEFAULT_CONTROLLER_ABOUT)):
                 return $this->controllers['default']->about();
                 break;
-            case("/login"):
+            case(RouteProvider::getRoute(RouteProvider::SECURITY_CONTROLLER_LOGIN)):
                 return $this->controllers['security']->login();
                 break;
-            case("/logout"):
+            case(RouteProvider::getRoute(RouteProvider::SECURITY_CONTROLLER_LOGOUT)):
                 return $this->controllers['security']->logout();
                 break;
-            case("/registration"):
+            case(RouteProvider::getRoute(RouteProvider::SECURITY_CONTROLLER_REGISTRATION)):
                 return $this->controllers['security']->registration();
                 break;
-            case("/profile/view"):
+            case(RouteProvider::getRoute(RouteProvider::PROFILE_CONTROLLER_VIEW)):
                 return $this->controllers['profile']->view();
                 break;
         }
