@@ -14,8 +14,14 @@ class Router
      */
     private $controllers;
 
+    /**
+     * @var RouteProvider
+     */
+    private $routeProvider;
+
     public function __construct()
     {
+        $this->routeProvider = new RouteProvider();
         $this->controllers = [
             'default' => new DefaultController(),
             'security' => new SecurityController(),
@@ -50,13 +56,13 @@ class Router
     private function handleApiRequests(string $url, array $request = [])
     {
         switch($url) {
-            case(RouteProvider::getRoute(RouteProvider::API_SECURITY_CONTROLLER_CREATE_USER)):
+            case($this->routeProvider->getRoute(RouteProvider::API_SECURITY_CONTROLLER_CREATE_USER)):
                 return $this->controllers['securityApi']->createUser($request);
                 break;
-            case(RouteProvider::getRoute(RouteProvider::API_SECURITY_CONTROLLER_AUTH_USER)):
+            case($this->routeProvider->getRoute(RouteProvider::API_SECURITY_CONTROLLER_AUTH_USER)):
                 return $this->controllers['securityApi']->authUser($request);
                 break;
-            case(RouteProvider::getRoute(RouteProvider::API_SECURITY_CONTROLLER_SAVE_FILE)):
+            case($this->routeProvider->getRoute(RouteProvider::API_SECURITY_CONTROLLER_SAVE_FILE)):
                 return $this->controllers['securityApi']->saveFile($_FILES);
                 break;
         }
@@ -70,22 +76,22 @@ class Router
     private function handleMainPages(string $url, array $request = [])
     {
         switch($url) {
-            case(RouteProvider::getRoute(RouteProvider::DEFAULT_CONTROLLER_HOMEPAGE)):
+            case($this->routeProvider->getRoute(RouteProvider::DEFAULT_CONTROLLER_HOMEPAGE)):
                 return $this->controllers['default']->homepage();
                 break;
-            case(RouteProvider::getRoute(RouteProvider::DEFAULT_CONTROLLER_ABOUT)):
+            case($this->routeProvider->getRoute(RouteProvider::DEFAULT_CONTROLLER_ABOUT)):
                 return $this->controllers['default']->about();
                 break;
-            case(RouteProvider::getRoute(RouteProvider::SECURITY_CONTROLLER_LOGIN)):
+            case($this->routeProvider->getRoute(RouteProvider::SECURITY_CONTROLLER_LOGIN)):
                 return $this->controllers['security']->login();
                 break;
-            case(RouteProvider::getRoute(RouteProvider::SECURITY_CONTROLLER_LOGOUT)):
+            case($this->routeProvider->getRoute(RouteProvider::SECURITY_CONTROLLER_LOGOUT)):
                 return $this->controllers['security']->logout();
                 break;
-            case(RouteProvider::getRoute(RouteProvider::SECURITY_CONTROLLER_REGISTRATION)):
+            case($this->routeProvider->getRoute(RouteProvider::SECURITY_CONTROLLER_REGISTRATION)):
                 return $this->controllers['security']->registration();
                 break;
-            case(RouteProvider::getRoute(RouteProvider::PROFILE_CONTROLLER_VIEW)):
+            case($this->routeProvider->getRoute(RouteProvider::PROFILE_CONTROLLER_VIEW)):
                 return $this->controllers['profile']->view();
                 break;
         }

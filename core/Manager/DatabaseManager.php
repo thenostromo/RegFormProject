@@ -3,16 +3,32 @@ namespace Core\Manager;
 
 use Core\Entity\User;
 use Core\Model\UserModel;
+use Core\Reader\ParameterManager;
 
 class DatabaseManager
 {
     private $connection;
 
+    /**
+     * @var ParameterManager
+     */
+    private $parameterManager;
+
     public function __construct()
     {
-        $dsn = "mysql:host=localhost;dbname=reg_form_project";
-        $user = "root";
-        $passwd = "root";
+        $this->parameterManager = new ParameterManager();
+        $this->createConnection();
+    }
+
+    private function createConnection()
+    {
+        $dsn = sprintf("%s:host=%s;dbname=%s",
+            $this->parameterManager->parameters["db_type"],
+            $this->parameterManager->parameters["db_host"],
+            $this->parameterManager->parameters["db_name"]
+        );
+        $user = $this->parameterManager->parameters["db_user"];
+        $passwd = $this->parameterManager->parameters["db_password"];
         $options = array(
             \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
         );

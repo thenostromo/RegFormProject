@@ -23,7 +23,7 @@ class RouteProvider
      * @param bool $isFullUrl
      * @return string|null
      */
-    public static function getRoute($controller, $isFullUrl = self::IS_NOT_FULL_URL)
+    public function getRoute($controller, $isFullUrl = self::IS_NOT_FULL_URL)
     {
         $mainUrl = null;
         if ($isFullUrl) {

@@ -13,14 +13,14 @@ class ProfileController extends AbstractController
     public function view()
     {
         if (!$this->sessionManager->isAuthUser()) {
-            $this->redirect(RouteProvider::getRoute(RouteProvider::SECURITY_CONTROLLER_LOGIN, RouteProvider::IS_FULL_URL));
+            $this->redirect($this->routeProvider->getRoute(RouteProvider::SECURITY_CONTROLLER_LOGIN, RouteProvider::IS_FULL_URL));
         }
         $user = new User();
         $user->loadFromSession($this->sessionManager->getSessionInfo());
 
         return $this->renderTemplate('profile/view.html.twig', [
             "user" => $user,
-            "urlLogout" => RouteProvider::getRoute(RouteProvider::SECURITY_CONTROLLER_LOGOUT, RouteProvider::IS_FULL_URL)
+            "urlLogout" => $this->routeProvider->getRoute(RouteProvider::SECURITY_CONTROLLER_LOGOUT, RouteProvider::IS_FULL_URL)
         ]);
     }
 }
