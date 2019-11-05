@@ -21,6 +21,11 @@ class User
     /**
      * @var string
      */
+    private $salt;
+
+    /**
+     * @var string
+     */
     private $fullname;
 
     /**
@@ -80,6 +85,24 @@ class User
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * @param string $salt
+     * @return $this
+     */
+    public function setSalt(string $salt)
+    {
+        $this->salt = $salt;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
     }
 
     /**

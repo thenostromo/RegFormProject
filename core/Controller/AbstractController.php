@@ -24,11 +24,17 @@ abstract class AbstractController
      */
     protected $sessionManager;
 
+    /**
+     * @var RouteProvider
+     */
+    protected $routeProvider;
+
     public function __construct()
     {
         $this->loader = new FilesystemLoader(__DIR__ . '/../templates');
         $this->twig = new Environment($this->loader);
         $this->sessionManager = new SessionManager();
+        $this->routeProvider = new RouteProvider();
     }
 
     /**
@@ -39,7 +45,7 @@ abstract class AbstractController
     protected function renderTemplate(string $template, array $params = [])
     {
         $params['interface'] = InterfaceProvider::getInterfaceMessages();
-        $params["hostWithScheme"] = RouteProvider::getRoute(RouteProvider::HOST_WITH_SCHEME, RouteProvider::IS_FULL_URL);
+        $params["hostWithScheme"] = $this->routeProvider->getRoute(RouteProvider::HOST_WITH_SCHEME, RouteProvider::IS_FULL_URL);
         try {
             return $this->twig->render($template, $params);
         } catch (\Twig\Error\Error $ex) {

@@ -12,7 +12,7 @@ Steps for deploy:
 1. composer install
 2. npm install
 3. make all requests to index.php
-4. change credentials of connection to database in file core/Manager/DatabaseManager.php
+4. change credentials of connection to database in file config/.env
 5. export database.sql from folder "db_dump" to your database
 
 For test you can run command:
